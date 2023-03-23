@@ -80,8 +80,8 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Gestion Nationalitées</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Liste des nationalitées</a>
-              <a class="dropdown-item" href="#">Ajouter une nationalitée</a>
+              <a class="dropdown-item" href="index.php?uc=nationalite&action=list">Liste des nationalitées</a>
+              <a class="dropdown-item" href="index.php?uc=nationalite&action=add">Ajouter une nationalitée</a>
             </div>
           </li>
           <li class="nav-item dropdown">

@@ -2,6 +2,7 @@
     session_start(); 
     include ("vues/header.php");
     include ("modeles/Continent.php");
+    include ("modeles/Nationalite.php");
     include ("modeles/monPdo.php");
     include ("vues/messageFlash.php");
 
@@ -15,5 +16,8 @@ switch($uc)
     case 'continents' :
         include ('controllers/continentController.php');
         break;
+        case 'nationalite' :
+            include ('controllers/NationaliteController.php');
+            break;
 }
 include "vues/footer.php"; ?>

@@ -32,6 +32,15 @@ class Nationalite
         {
                 return $this->num;
         }
+        /**
+         * Set numéro de la Nationalite
+         */
+        public function setNum(int $num): self
+        {
+                $this->num = $num;
+
+                return $this;
+        }
        /**
         * Lit le libellé
         *
@@ -83,7 +92,7 @@ class Nationalite
          */
         public static function findAll() : array
         {
-            $req=MonPdo::getInstance()->prepare("select n.num, n.libelle as 'libNation', c.libelle as 'libCont' from nationalite n, continent c where n.numContinent=c.num");
+            $req=MonPdo::getInstance()->prepare("select n.num, n.libelle as 'libNation', c.libelle as 'libCont' from nationalite n, continent c where n.numContinent=c.num order by n.num");
             $req->setFetchMode(PDO::FETCH_OBJ);
             $req->execute();
             $lesResultats=$req->fetchAll();
@@ -152,6 +161,8 @@ class Nationalite
             $nb=$req->execute();
             return $nb; 
         }
+
+        
 
         
     }
