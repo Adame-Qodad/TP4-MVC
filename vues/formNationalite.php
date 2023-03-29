@@ -1,9 +1,9 @@
 <div class="container mt-5">
         <h2 class="pt-4 text-center"><?php echo $mode ?> une Nationalitée</h2>
-        <form action="valideFormNatio.php?action=<?php echo $mode ?>" method="post" class="col-md-6 offset-md-3">
+        <form action="index.php?uc=nationalite&action=valide" method="post" class="col-md-6 offset-md-3">
             <div class="form-group">
                 <label for='libelle' > Nationalité </label>
-                <input type="text" class='form-control' id='libelle' placehoder='Saisir la nationalité' name='libelle' value="<?php     if ($mode == "Modifier") { echo $laNationalite->libelle; } ?>">
+                <input type="text" class='form-control' id='libelle' placehoder='Saisir la nationalité' name='libelle' value="<?php     if ($mode == "Modifier") { echo $laNationalite->getLibelle(); } ?>">
             </div>
             <div class="form-group">
                 <label for='continent' > Continent </label>
@@ -14,7 +14,7 @@
                     foreach($lesContinents as $continent)
                     
                     {
-                        $selection=$continent->getNum() == $laNationalite->numContinent ? 'selected' : '';
+                        $selection=$continent->getNum() == $laNationalite->getNumContinent()->getNum() ? 'selected' : '';
                         echo  "<option value='".$continent->getNum()."' $selection>".$continent->getLibelle()."</option>";
                     }
 

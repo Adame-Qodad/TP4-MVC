@@ -21,8 +21,6 @@
 
                             { 
                                 
-                                $selection=$continent->num == $contientSel ? 'selected' : '';
-                                echo  "<option value='$continent->num' $selection>$continent->libelle</option>";
                             }
 
                           ?>
@@ -54,8 +52,8 @@
               echo "<td class='col-md-3'>$nationalite->num</td>";
               echo "<td class='col-md-3'>$nationalite->libNation</td>";
               echo "<td class='col-md-3'>$nationalite->libCont</td>";
-              echo "<td class='col-md-3'><a href='index.php?uc=nationalite&action=uptdate&num=".$nationalite->getNum()."' class='btn btn-primary'><i class='fas fa-pen'></i></a>
-                    <a href='#modalSuppr' data-toggle='modal' data-message='Voulez-vous supprimer cette nationalitée ?' data-suppr='index.php?uc=nationalite&action=delete&num=".$nationalite->getNum()."' class='btn btn-danger'><i class='far fa-trash-alt'></i></a></td>";
+              echo "<td class='col-md-3'><a href='index.php?uc=nationalite&action=update&num=$nationalite->num' class='btn btn-primary'><i class='fas fa-pen'></i></a>
+                    <a href='#modalSuppr' data-toggle='modal' data-message='Voulez-vous supprimer cette nationalitée ?' data-suppr='index.php?uc=nationalite&action=delete&num=$nationalite->num' class='btn btn-danger'><i class='far fa-trash-alt'></i></a></td>";
               echo "</tr>";
           }
           ?>

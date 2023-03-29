@@ -14,14 +14,15 @@
         case 'update' :
             $lesContinents=Continent::findAll();
             $mode="Modifier";
-            $nationalite = Nationalite::findById($_GET['num']);
+            $laNationalite = Nationalite::findById($_GET['num']);
             include ('vues/formNationalite.php');
             break;
         case 'valide' :
             $nationalite= new Nationalite;
             if(empty($_POST['num']))//cas d'un ajout
             {
-                $natinalite->setLibelle($_POST['libelle']);
+                $nationalite->setLibelle($_POST['libelle']);
+                $nationalite->setNumContinent(Continent::findById($_POST['continent']));
                 $nb=Nationalite::add($nationalite);
                 $message = "créer";
             }
@@ -30,6 +31,7 @@
             {
                 $nationalite->setLibelle($_POST['libelle']);
                 $nationalite->setNum($_POST['num']);
+                $nationalite->setNumContinent(Continent::findById($_POST['continent']));
                 $nb=Nationalite::update($nationalite);
                 $message = "modifier";
             }
@@ -47,8 +49,8 @@
             break;
 
         case 'delete' :
-            $continent = Continent::findById($_GET['num']);
-            $nb=Continent::delete($continent);
+            $nationalite = Nationalite::findById($_GET['num']);
+            $nb=Nationalite::delete($nationalite);
 
             if($nb==1)
             {
