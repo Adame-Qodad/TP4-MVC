@@ -3,9 +3,16 @@
     switch($action)
     {
         case 'list' :
-            $lesNationalites=Nationalite::findAll();
+            $libelle="";
+        $continentSel="Tous";
+        if(!empty($_POST['libelle'])  ||  !empty($_POST['continent'])){
+                $libelle= $_POST['libelle'];
+                $continentSel= $_POST['continent'];
+        }
+        $lesContinents=Continent::findAll();
+        $lesNationalites=Nationalite::findAll($libelle, $continentSel);
             include ('vues/listeNationalite.php');
-            break; 
+    break; 
         case 'add' :
             $lesContinents=Continent::findAll();
             $mode="Ajouter";

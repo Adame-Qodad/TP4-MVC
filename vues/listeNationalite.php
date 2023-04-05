@@ -5,31 +5,44 @@
 
 
                 
-              <form action="" method="get">
-                <div class="row">
+        <form action="index.php?uc=nationalite&action=list" method="post" class="border border-primary rounded p-3">
 
-                    <div class="col">
-                      <input type="text" class='form-control' id='libelle' placehoder='Saisir la nationalité' name='libelle' value="<?php if(!empty($_GET['libelle'])) {echo $libelle;} ?>">
-                    </div>
+<div class="row">
+  
 
-                    <div class="col">
-                      <select name="continent" class='form-control'>
+    <div class="col">
 
-                          <?php
-                            echo  "<option value='Tous'>Tous les continents</option>";
-                            foreach($lesContinents as $continent)
+      <input type="text" class="form-control" id="libelle" placeholder="Saisir le libellé" name="libelle"  value= "<?php $libelle; ?>">
+      
+    </div>
 
-                            { 
-                                
-                            }
+    <div class="col">
+    <select name="continent" class="form-control" onChange="document.getElementById('formRecherche').submit()">
+              <?php      
+              
+              echo "<option value='Tous'> Tous les continents</option>";
+              foreach($lesContinents as $continent){
+                  
+                  $selection = $continent->getNum() == intval($continentSel) ? 'selected' : '';
+                  echo "<option value='" . $continent->getNum() . "' ". $selection." >". $continent->getLibelle() ."</option>";
+          
+          }
+          ?>
 
-                          ?>
-                          </select>
-                    </div>
+          </select>
+    </div>
+    <!-- BUTTON -->
+    <div class="col">
+          
+      <button type="submit" class="btn btn-success btn-block">Rechercher</button>
 
-                  <div class="col">
-                    <button type="submit" class="btn btn-success btn-block ">Rechercher</button>
-                  </div>
+    </div>
+
+</div>
+
+</form>
+
+                  
                     
                 </div>
               </form>

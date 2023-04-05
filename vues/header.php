@@ -66,14 +66,14 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Genre</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Type de genre</a>
+              <a class="dropdown-item" href="index.php?uc=genre&action=list">Type de genre</a>
               <a class="dropdown-item" href="#">Ajouter un genre</a>
             </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Auteur</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Liste des auteurs</a>
+              <a class="dropdown-item" href="index.php?uc=auteur&action=list">Liste des auteurs</a>
               <a class="dropdown-item" href="#">Chercher un auteur</a>
             </div>
           </li>

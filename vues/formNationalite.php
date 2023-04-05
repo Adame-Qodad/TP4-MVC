@@ -10,12 +10,23 @@
                 <select name="continent" class='form-control'>
 
                     <?php
-
-                    foreach($lesContinents as $continent)
-                    
+                    if ($mode == "Ajouter")
                     {
-                        $selection=$continent->getNum() == $laNationalite->getNumContinent()->getNum() ? 'selected' : '';
-                        echo  "<option value='".$continent->getNum()."' $selection>".$continent->getLibelle()."</option>";
+                        foreach($lesContinents as $continent)
+                        
+                        {
+                            $selection=$continent->getNum() == $laNationalite->numContinent ? 'selected' : '';
+                            echo  "<option value='".$continent->getNum()."' $selection>".$continent->getLibelle()."</option>";
+                        }
+                    }
+
+                    else
+                    {
+                        foreach($lesContinents as $continent)
+                        {
+                            $selection=$continent->getNum() == $laNationalite->getNumContinent()->getNum() ? 'selected' : '';
+                            echo  "<option value='".$continent->getNum()."' $selection>".$continent->getLibelle()."</option>";
+                        }
                     }
 
                     ?>

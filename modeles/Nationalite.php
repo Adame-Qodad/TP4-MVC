@@ -92,7 +92,29 @@ class Nationalite
          */
         public static function findAll() : array
         {
-            $req=MonPdo::getInstance()->prepare("select n.num, n.libelle as 'libNation', c.libelle as 'libCont' from nationalite n, continent c where n.numContinent=c.num order by n.num");
+            $libelle="";
+       $continentSel="Tous";
+       $textReq="select n.num, n.libelle as 'libNation', c.libelle as 'libCont' from nationalite n, continent c where n.numContinent=c.num";
+
+       if(!empty($_GET))
+
+       {
+        $libelle=$_GET['libelle'];
+        $continentSel=$_GET['continent'];
+
+        if(!empty($_GET['libelle']))
+        {
+          $textReq.=" and n.libelle like'%" . $libelle."%'";
+        }
+
+        if($_GET['continent'] != 'Tous')
+        {
+          $textReq.=" and c.num =" . $continentSel;
+        }
+      }
+        $textReq.=" order by n.num";
+        $req=MonPdo::getInstance()->prepare($textReq);
+            
             $req->setFetchMode(PDO::FETCH_OBJ);
             $req->execute();
             $lesResultats=$req->fetchAll();
