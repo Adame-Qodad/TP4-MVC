@@ -96,30 +96,30 @@ class Nationalite
        $continentSel="Tous";
        $textReq="select n.num, n.libelle as 'libNation', c.libelle as 'libCont' from nationalite n, continent c where n.numContinent=c.num";
 
-       if(!empty($_GET))
+       if(!empty($_POST))
 
        {
-        $libelle=$_GET['libelle'];
-        $continentSel=$_GET['continent'];
+            $libelle=$_POST['libelle'];
+            $continentSel=$_POST['continent'];
 
-        if(!empty($_GET['libelle']))
-        {
-          $textReq.=" and n.libelle like'%" . $libelle."%'";
-        }
+            if(!empty($_POST['libelle']))
+            {
+            $textReq.=" and n.libelle like'%" . $libelle."%'";
+            }
 
-        if($_GET['continent'] != 'Tous')
-        {
-          $textReq.=" and c.num =" . $continentSel;
+            if($_POST['continent'] != 'Tous')
+            {
+            $textReq.=" and c.num =" . $continentSel;
+            }
         }
-      }
-        $textReq.=" order by n.num";
+         $textReq.=" order by n.num";
         $req=MonPdo::getInstance()->prepare($textReq);
             
-            $req->setFetchMode(PDO::FETCH_OBJ);
-            $req->execute();
-            $lesResultats=$req->fetchAll();
-            return $lesResultats;
-        }
+        $req->setFetchMode(PDO::FETCH_OBJ);
+        $req->execute();
+        $lesResultats=$req->fetchAll();
+        return $lesResultats;
+    }
 
         /**
          * Trouve une nationalitée par son num

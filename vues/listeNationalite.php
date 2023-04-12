@@ -16,22 +16,22 @@
       
     </div>
 
-    <div class="col">
-    <select name="continent" class="form-control" onChange="document.getElementById('formRecherche').submit()">
-              <?php      
-              
-              echo "<option value='Tous'> Tous les continents</option>";
-              foreach($lesContinents as $continent){
-                  
-                  $selection = $continent->getNum() == intval($continentSel) ? 'selected' : '';
-                  echo "<option value='" . $continent->getNum() . "' ". $selection." >". $continent->getLibelle() ."</option>";
-          
-          }
-          ?>
+    <div class="col-5">
+                      <select name="continent" class='form-control'>
 
-          </select>
-    </div>
-    <!-- BUTTON -->
+                          <?php
+                            echo  "<option value='Tous'>Tous les continents</option>";
+                            var_dump($lesContinents);
+                            foreach($lesContinents as $continent)
+                            { 
+                                
+                                $selection=$continent->getNum() == $continentSel ? 'selected' : '';
+                                echo  "<option value='".$continent->getNum()."' $selection>".$continent->getLibelle()."</option>";
+                            }
+
+                          ?>
+                          </select>
+                    </div>
     <div class="col">
           
       <button type="submit" class="btn btn-success btn-block">Rechercher</button>
